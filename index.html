@@ -1,1 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tafseer Media</title>
+  <meta name="description" content="Browse and stream Tafseer audio." />
 
+  <link rel="icon" href="assets/logo/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Tafseer Media home">
+        <img class="brand-logo" src="assets/logo/logo.png" alt="Tafseer Media" />
+        <span class="brand-name">Sheikh Dahiru Usman Bauchi Foundation</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html" aria-current="page">Library</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+
+      <button class="icon-btn nav-toggle" type="button" aria-label="Open menu">
+        <span class="icon">☰</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Offline-on-mobile CTA -->
+  <section class="app-cta">
+    <div class="container app-cta-inner">
+      <div class="app-cta-text">
+        <strong>Offline listening?</strong>
+        <span>Get the mobile app to download and listen offline.</span>
+      </div>
+      <div class="app-cta-actions">
+        <a class="btn btn-primary" href="#" id="downloadAppBtn">Download App</a>
+        <a class="btn btn-ghost" href="#" id="learnMoreBtn">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container page">
+    <!-- Page title -->
+    <div class="page-head">
+      <div>
+        <h1 class="page-title">Tafseer Library</h1>
+        <p class="page-subtitle">Search, filter, and stream available Tafseer sessions.</p>
+      </div>
+    </div>
+
+    <!-- Search + Filters -->
+    <section class="panel">
+      <div class="panel-row">
+        <label class="field">
+          <span class="field-label">Search</span>
+          <input id="searchInput" class="input" type="search" placeholder="Search by title, surah, location..." />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Surah</span>
+          <select id="surahSelect" class="select">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Location</span>
+          <select id="locationSelect" class="select">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <div class="panel-actions">
+          <button id="clearBtn" class="btn btn-outline" type="button">Clear</button>
+          <button id="searchBtn" class="btn btn-primary" type="button">Search</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Results</h2>
+        <div class="muted" id="resultsMeta">—</div>
+      </div>
+
+      <!-- Loading skeletons -->
+      <div id="skeletonGrid" class="grid" aria-hidden="true">
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+      </div>
+
+      <!-- Actual cards render here -->
+      <div id="tafsirGrid" class="grid" hidden></div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty" hidden>
+        <div class="empty-box">
+          <h3 class="empty-title">No results</h3>
+          <p class="empty-text">Try changing your search or filters.</p>
+        </div>
+      </div>
+
+      <!-- Error state -->
+      <div id="errorState" class="empty" hidden>
+        <div class="empty-box">
+          <h3 class="empty-title">Something went wrong</h3>
+          <p class="empty-text" id="errorText">Please refresh and try again.</p>
+          <button class="btn btn-outline" id="retryBtn" type="button">Retry</button>
+        </div>
+      </div>
+
+      <!-- Simple pagination -->
+      <div class="pager" id="pager" hidden>
+        <button class="btn btn-outline" id="prevBtn" type="button">Previous</button>
+        <span class="muted" id="pageInfo">Page 1</span>
+        <button class="btn btn-outline" id="nextBtn" type="button">Next</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="muted">© <span id="year"></span> Tafseer Media</div>
+      <div class="muted">Streaming on web • Offline on mobile</div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/pages/index.js"></script>
+</body>
+</html>
