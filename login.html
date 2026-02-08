@@ -1,1 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login • Sheikh Dahiru Bauchi</title>
+  <meta name="description" content="Sign in to save favorites and sync progress." />
+
+  <link rel="icon" href="assets/logo/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <img class="brand-logo" src="assets/logo/logo.png" alt="Sheikh Dahiru Bauchi logo" />
+        <div class="brand-stack">
+          <span class="brand-name">SHEIKH DAHIRU BAUCHI</span>
+          <span class="brand-sub">SAUTUL ISLAM DIGITAL LEGACY</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="tafsir.html">Tafsir Library</a>
+        <a class="nav-link" href="player.html">Player</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="login.html" aria-current="page">Login</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="index.html">Home</a>
+        <a class="btn btn-primary" href="tafsir.html">Open Library</a>
+        <button
+          class="icon-btn nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span class="icon" aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="container mobile-menu-inner">
+        <a class="mobile-link" href="index.html">Home</a>
+        <a class="mobile-link" href="tafsir.html">Tafsir Library</a>
+        <a class="mobile-link" href="player.html">Player</a>
+        <a class="mobile-link" href="profile.html">Profile</a>
+        <a class="mobile-link" href="login.html" aria-current="page">Login</a>
+        <a class="btn btn-primary mobile-cta" href="tafsir.html">Open Library</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="main" class="container page">
+    <section class="auth-shell">
+      <div class="card auth-card">
+        <div class="auth-head">
+          <span class="pill">Account</span>
+          <h1 class="auth-title">Sign in</h1>
+          <p class="muted auth-sub">
+            Sign in to keep favorites and listening progress on this device.
+          </p>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <label class="field">
+            <span class="field-label">Full name</span>
+            <input class="input" id="name" type="text" placeholder="Your name" autocomplete="name" required />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input class="input" id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Password</span>
+            <input class="input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" required />
+          </label>
+
+          <div class="auth-actions">
+            <button class="btn btn-primary" type="submit">Sign in</button>
+            <a class="btn btn-outline" href="tafsir.html">Continue as guest</a>
+          </div>
+
+          <p class="muted auth-hint" id="authHint">
+            Offline listening is available on the mobile app.
+          </p>
+
+          <div class="auth-msg" id="msg" role="status" aria-live="polite" hidden></div>
+        </form>
+      </div>
+
+      <aside class="card auth-side">
+        <h2 class="section-title">What you get</h2>
+
+        <div class="auth-benefits">
+          <div class="mini-card">
+            <div class="mini-icon" aria-hidden="true">★</div>
+            <div>
+              <div class="mini-label">Favorites</div>
+              <div class="mini-value">Save items for quick access</div>
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-icon" aria-hidden="true">⏱</div>
+            <div>
+              <div class="mini-label">Progress</div>
+              <div class="mini-value">Resume from last position</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="notice" role="note">
+          <strong>Offline listening:</strong> available on the mobile app.
+          <a class="notice-link" href="#" id="downloadAppLink">Get the app</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer footer-pro">
+    <div class="container footer-pro-inner">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-title">Sheikh Dahiru Bauchi</div>
+        <div class="footer-brand-sub">GLOBAL DIGITAL ARCHIVE</div>
+        <p class="footer-text">
+          A digital initiative dedicated to preserving authentic Tafsir recordings and making them accessible worldwide.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">PAGES</div>
+        <a class="footer-link" href="tafsir.html">Tafsir Library</a>
+        <a class="footer-link" href="player.html">Player</a>
+        <a class="footer-link" href="profile.html">Profile</a>
+        <a class="footer-link" href="login.html">Login</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">SUPPORT</div>
+        <a class="footer-link" href="#">Submit Recordings</a>
+        <a class="footer-link" href="#">Partner Network</a>
+        <a class="footer-link" href="#">Privacy Policy</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">CONTACT</div>
+        <p class="footer-text">For feedback or contributions:</p>
+        <a class="footer-link footer-email" href="mailto:archive@dahirubauchi.org">archive@dahirubauchi.org</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="small">© <span id="year"></span> Sheikh Dahiru Bauchi Digital Library.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/pages/login.js"></script>
+</body>
+</html>
 

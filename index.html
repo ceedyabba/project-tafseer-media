@@ -7,19 +7,23 @@
   <meta name="description" content="Official digital archive for Tafsir and teachings." />
 
   <link rel="icon" href="assets/logo/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Home">
         <img class="brand-logo" src="assets/logo/logo.png" alt="Sheikh Dahiru Bauchi logo" />
         <div class="brand-stack">
-          <span class="brand-name">Sheikh Dahiru Bauchi</span>
-          <span class="brand-sub">DIGITAL LEGACY</span>
+          <span class="brand-name">SHEIKH DAHIRU BAUCHI</span>
+          <span class="brand-sub">SAUTUL ISLAM DIGITAL LEGACY</span>
         </div>
       </a>
 
@@ -32,15 +36,19 @@
 
       <div class="nav-actions">
         <a class="btn btn-primary" href="tafsir.html">Open Library</a>
-        <button class="icon-btn nav-toggle" type="button"
+        <button
+          class="icon-btn nav-toggle"
+          type="button"
           aria-label="Open menu"
           aria-expanded="false"
-          aria-controls="mobileMenu">
+          aria-controls="mobileMenu"
+        >
           <span class="icon" aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
 
+    <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu" hidden>
       <div class="container mobile-menu-inner">
         <a class="mobile-link" href="tafsir.html">Tafsir Library</a>
@@ -52,8 +60,34 @@
     </div>
   </header>
 
+  <!-- Main -->
   <main id="main" class="container page home-page">
+    <!-- Hero -->
     <section class="hero" aria-label="Hero">
+      <!-- Media (image + box) -->
+      <div class="hero-media">
+        <div class="hero-image-frame">
+          <img
+            class="hero-image"
+            src="assets/images/sautul-islam.jpeg"
+            alt="Archive visual"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Clean professional box under the image -->
+        <div class="hero-card" role="note" aria-label="About this archive">
+          <div class="hero-card-top">
+            <span class="hero-tag">Digital Archive</span>
+          </div>
+          <h3 class="hero-card-title">Authentic Tafsir Library</h3>
+          <p class="hero-card-text">
+            Stream curated Tafsir recordings on the web. For offline listening, use the mobile app.
+          </p>
+        </div>
+      </div>
+
+      <!-- Content -->
       <div class="hero-left">
         <span class="pill">Preserving the Voice of Wisdom</span>
 
@@ -62,9 +96,10 @@
           Usman Bauchi <span class="hero-ra">(RA)</span>
         </h1>
 
-        <p class="hero-text">
-          Access the Tafsir Library, stream audios on the Player page, and manage your account in Profile.
-          Offline listening is available on the mobile app.
+        <p class="hero-text justified-text">
+          Welcome to the official digital sanctuary for the authentic Tafsir and teachings of one of the most revered
+          Islamic scholars, Sheikh Tahir Usman Bauchi. Dedicated to the global dissemination of Qur’anic knowledge and
+          spiritual guidance.
         </p>
 
         <div class="hero-actions">
@@ -80,6 +115,7 @@
               <div class="mini-value">Browse Tafsir series</div>
             </div>
           </div>
+
           <div class="mini-card">
             <div class="mini-icon" aria-hidden="true">🎧</div>
             <div>
@@ -94,27 +130,9 @@
           <a class="notice-link" href="#" id="downloadAppLink">Get the app</a>
         </div>
       </div>
-
-      <div class="hero-right">
-        <div class="hero-image-frame">
-          <img
-            class="hero-image"
-            src="assets/images/sautul-islam2.jpeg"
-            alt="Archive visual"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="hero-badge" aria-label="Recognition">
-          <div class="badge-icon" aria-hidden="true">📚</div>
-          <div>
-            <div class="badge-top">DIGITAL ARCHIVE</div>
-            <div class="badge-title">Authentic Tafsir Library</div>
-          </div>
-        </div>
-      </div>
     </section>
 
+    <!-- Pages overview -->
     <section class="overview" aria-label="Overview">
       <div class="overview-head">
         <h2 class="section-title">Pages</h2>
@@ -125,7 +143,7 @@
         <article class="card overview-card">
           <h3 class="card-title">Tafsir Library</h3>
           <p class="muted">
-            Browse Tafsir series, filter by Surah and location, then select an audio to play.
+            Browse Tafsir series, filter by Surah, then select an audio to play.
           </p>
           <div class="card-actions">
             <a class="btn btn-primary" href="tafsir.html">Open Library</a>
@@ -165,14 +183,12 @@
     </section>
   </main>
 
-  <section class="prefooter" aria-hidden="true">
-    <div class="prefooter-overlay"></div>
-  </section>
 
+  <!-- Footer -->
   <footer class="site-footer footer-pro">
     <div class="container footer-pro-inner">
       <div class="footer-col footer-brand">
-        <div class="footer-brand-title">Sheikh Dahiru Usman Bauchi</div>
+        <div class="footer-brand-title">Sheikh Dahiru Bauchi</div>
         <div class="footer-brand-sub">GLOBAL DIGITAL ARCHIVE</div>
         <p class="footer-text">
           A digital initiative dedicated to preserving authentic Tafsir recordings and making them accessible worldwide.
@@ -196,16 +212,12 @@
 
       <div class="footer-col">
         <div class="footer-head">CONTACT</div>
-        <p class="footer-text">
-          For feedback or contributions:
-        </p>
+        <p class="footer-text">For feedback or contributions:</p>
         <a class="footer-link footer-email" href="mailto:archive@dahirubauchi.org">archive@dahirubauchi.org</a>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <span class="pill small-pill">MVP PROTOTYPE v1.2</span>
-      <span class="small">NIGERIA / INTERNATIONAL</span>
       <span class="small">© <span id="year"></span> Sheikh Dahiru Bauchi Digital Library.</span>
     </div>
   </footer>

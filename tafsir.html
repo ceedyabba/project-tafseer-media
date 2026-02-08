@@ -3,137 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tafseer Media</title>
-  <meta name="description" content="Browse and stream Tafseer audio." />
+  <title>Tafsir Library • Sheikh Dahiru Bauchi</title>
+  <meta name="description" content="Browse Tafsir recordings, filter by Surah/location, and play in the web player." />
 
   <link rel="icon" href="assets/logo/favicon.png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <!-- Top Bar -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Tafseer Media home">
-        <img class="brand-logo" src="assets/logo/logo.png" alt="Tafseer Media" />
-        <span class="brand-name">Sheikh Dahiru Usman Bauchi Foundation</span>
+      <a class="brand" href="index.html" aria-label="Home">
+        <img class="brand-logo" src="assets/logo/logo.png" alt="Sheikh Dahiru Bauchi logo" />
+        <div class="brand-stack">
+          <span class="brand-name">SHEIKH DAHIRU BAUCHI</span>
+          <span class="brand-sub">SAUTUL ISLAM DIGITAL LEGACY</span>
+        </div>
       </a>
 
       <nav class="nav" aria-label="Primary">
-        <a class="nav-link" href="index.html" aria-current="page">Library</a>
+        <a class="nav-link" href="tafsir.html" aria-current="page">Tafsir Library</a>
+        <a class="nav-link" href="player.html">Player</a>
         <a class="nav-link" href="profile.html">Profile</a>
         <a class="nav-link" href="login.html">Login</a>
       </nav>
 
-      <button class="icon-btn nav-toggle" type="button" aria-label="Open menu">
-        <span class="icon">☰</span>
-      </button>
+      <div class="nav-actions">
+         <a class="nav-link" href="index.html">Home</a>
+        <a class="btn btn-primary" href="player.html" id="resumeBtn">Resume</a>
+        <button
+          class="icon-btn nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span class="icon" aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="container mobile-menu-inner">
+        <a class="mobile-link" href="tafsir.html" aria-current="page">Tafsir Library</a>
+        <a class="mobile-link" href="player.html">Player</a>
+        <a class="mobile-link" href="profile.html">Profile</a>
+        <a class="mobile-link" href="login.html">Login</a>
+        <a class="btn btn-primary mobile-cta" href="player.html" id="resumeBtnMobile">Resume</a>
+      </div>
     </div>
   </header>
 
-  <!-- Offline-on-mobile CTA -->
-  <section class="app-cta">
-    <div class="container app-cta-inner">
-      <div class="app-cta-text">
-        <strong>Offline listening?</strong>
-        <span>Get the mobile app to download and listen offline.</span>
+  <!-- Main -->
+  <main id="main" class="container page">
+    <section class="library-head">
+      <div class="library-title-wrap">
+        <span class="pill">Tafsir Library</span>
+        <h1 class="library-title">Browse &amp; Play</h1>
+        <p class="muted library-sub">
+          Search and filter recordings, then tap Play to open the Player page.
+        </p>
       </div>
-      <div class="app-cta-actions">
-        <a class="btn btn-primary" href="#" id="downloadAppBtn">Download App</a>
-        <a class="btn btn-ghost" href="#" id="learnMoreBtn">Learn more</a>
-      </div>
-    </div>
-  </section>
 
-  <main class="container page">
-    <!-- Page title -->
-    <div class="page-head">
-      <div>
-        <h1 class="page-title">Tafseer Library</h1>
-        <p class="page-subtitle">Search, filter, and stream available Tafseer sessions.</p>
+      <div class="library-stats card" aria-label="Library stats">
+        <div class="stat-row">
+          <span class="stat-label">Items</span>
+          <span class="stat-value" id="statTotal">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Filtered</span>
+          <span class="stat-value" id="statFiltered">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Last played</span>
+          <span class="stat-value" id="statLast">—</span>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Search + Filters -->
-    <section class="panel">
-      <div class="panel-row">
+    <!-- Filters -->
+    <section class="card library-toolbar" aria-label="Filters">
+      <div class="toolbar-row">
         <label class="field">
           <span class="field-label">Search</span>
-          <input id="searchInput" class="input" type="search" placeholder="Search by title, surah, location..." />
+          <input class="input" id="q" type="search" placeholder="Search by Surah, title, location..." autocomplete="off" />
         </label>
 
         <label class="field">
           <span class="field-label">Surah</span>
-          <select id="surahSelect" class="select">
+          <select class="select" id="surah">
             <option value="">All</option>
           </select>
         </label>
 
         <label class="field">
-          <span class="field-label">Location</span>
-          <select id="locationSelect" class="select">
-            <option value="">All</option>
+          <span class="field-label">Sort</span>
+          <select class="select" id="sort">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="surah">Surah</option>
+            <option value="title">Title</option>
           </select>
         </label>
 
-        <div class="panel-actions">
-          <button id="clearBtn" class="btn btn-outline" type="button">Clear</button>
-          <button id="searchBtn" class="btn btn-primary" type="button">Search</button>
+        <div class="toolbar-actions">
+          <button class="btn btn-outline" id="resetBtn" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="toolbar-row toolbar-row-secondary">
+        <label class="check">
+          <input type="checkbox" id="onlyFav" />
+          <span>Favorites only</span>
+        </label>
+
+        <div class="toolbar-hint muted">
+          Selecting an item sends you to <strong>player.html</strong>.
         </div>
       </div>
     </section>
 
     <!-- Results -->
-    <section class="section">
-      <div class="section-head">
+    <section class="library-results" aria-label="Results">
+      <div class="results-head">
         <h2 class="section-title">Results</h2>
-        <div class="muted" id="resultsMeta">—</div>
+        <p class="muted" id="resultsHint">—</p>
       </div>
 
-      <!-- Loading skeletons -->
-      <div id="skeletonGrid" class="grid" aria-hidden="true">
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-      </div>
+      <div class="grid" id="grid" aria-live="polite"></div>
 
-      <!-- Actual cards render here -->
-      <div id="tafsirGrid" class="grid" hidden></div>
-
-      <!-- Empty state -->
-      <div id="emptyState" class="empty" hidden>
-        <div class="empty-box">
-          <h3 class="empty-title">No results</h3>
-          <p class="empty-text">Try changing your search or filters.</p>
-        </div>
-      </div>
-
-      <!-- Error state -->
-      <div id="errorState" class="empty" hidden>
-        <div class="empty-box">
-          <h3 class="empty-title">Something went wrong</h3>
-          <p class="empty-text" id="errorText">Please refresh and try again.</p>
-          <button class="btn btn-outline" id="retryBtn" type="button">Retry</button>
-        </div>
-      </div>
-
-      <!-- Simple pagination -->
-      <div class="pager" id="pager" hidden>
-        <button class="btn btn-outline" id="prevBtn" type="button">Previous</button>
-        <span class="muted" id="pageInfo">Page 1</span>
-        <button class="btn btn-outline" id="nextBtn" type="button">Next</button>
+      <div class="empty card" id="empty" hidden>
+        <h3 class="card-title">No matches</h3>
+        <p class="muted">Try clearing filters or changing your search.</p>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="muted">© <span id="year"></span> Tafseer Media</div>
-      <div class="muted">Streaming on web • Offline on mobile</div>
+  <!-- Pre-footer image -->
+  <section class="prefooter" aria-hidden="true">
+    <div class="prefooter-overlay"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer footer-pro">
+    <div class="container footer-pro-inner">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-title">Sheikh Dahiru Bauchi</div>
+        <div class="footer-brand-sub">GLOBAL DIGITAL ARCHIVE</div>
+        <p class="footer-text">
+          Stream Tafsir recordings on the web. Offline listening is available on the mobile app.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">PAGES</div>
+        <a class="footer-link" href="tafsir.html">Tafsir Library</a>
+        <a class="footer-link" href="player.html">Player</a>
+        <a class="footer-link" href="profile.html">Profile</a>
+        <a class="footer-link" href="login.html">Login</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">SUPPORT</div>
+        <a class="footer-link" href="#">Submit Recordings</a>
+        <a class="footer-link" href="#">Partner Network</a>
+        <a class="footer-link" href="#">Privacy Policy</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">CONTACT</div>
+        <p class="footer-text">For feedback or contributions:</p>
+        <a class="footer-link footer-email" href="mailto:archive@dahirubauchi.org">archive@dahirubauchi.org</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="small">© <span id="year"></span> Sheikh Dahiru Bauchi Digital Library.</span>
     </div>
   </footer>
 
-  <script type="module" src="js/pages/index.js"></script>
+  <script type="module" src="js/pages/tafsir.js"></script>
 </body>
 </html>

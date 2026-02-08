@@ -1,1 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Player • Sheikh Dahiru Bauchi</title>
+  <meta name="description" content="Play Tafsir audio and control playback." />
+
+  <link rel="icon" href="assets/logo/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <img class="brand-logo" src="assets/logo/logo.png" alt="Sheikh Dahiru Bauchi logo" />
+        <div class="brand-stack">
+          <span class="brand-name">SHEIKH DAHIRU BAUCHI</span>
+          <span class="brand-sub">SAUTUL ISLAM DIGITAL LEGACY</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="tafsir.html">Tafsir Library</a>
+        <a class="nav-link" href="player.html" aria-current="page">Player</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="tafsir.html">Back to Library</a>
+        <button
+          class="icon-btn nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span class="icon" aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="container mobile-menu-inner">
+        <a class="mobile-link" href="tafsir.html">Tafsir Library</a>
+        <a class="mobile-link" href="player.html" aria-current="page">Player</a>
+        <a class="mobile-link" href="profile.html">Profile</a>
+        <a class="mobile-link" href="login.html">Login</a>
+        <a class="btn btn-outline mobile-cta" href="tafsir.html">Back to Library</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container page">
+    <section class="player-shell">
+      <!-- Now playing -->
+      <div class="card player-now">
+        <div class="now-top">
+          <span class="pill">Now Playing</span>
+          <span class="small" id="nowMeta">—</span>
+        </div>
+
+        <h1 class="now-title" id="nowTitle">Select an audio from the Library</h1>
+        <p class="muted now-sub" id="nowSub">Open Tafsir Library to choose an audio.</p>
+
+        <div class="seek">
+          <span class="small" id="tCur">0:00</span>
+          <input id="seek" class="range" type="range" min="0" max="100" value="0" />
+          <span class="small" id="tDur">0:00</span>
+        </div>
+
+        <div class="controls">
+          <button class="btn btn-outline" id="prevBtn" type="button" aria-label="Previous">⏮</button>
+          <button class="btn btn-primary" id="playBtn" type="button" aria-label="Play/Pause">▶</button>
+          <button class="btn btn-outline" id="nextBtn" type="button" aria-label="Next">⏭</button>
+
+          <div class="controls-right">
+            <label class="field mini-field">
+              <span class="field-label">Speed</span>
+              <select class="select" id="speed">
+                <option value="0.75">0.75×</option>
+                <option value="1" selected>1×</option>
+                <option value="1.25">1.25×</option>
+                <option value="1.5">1.5×</option>
+              </select>
+            </label>
+
+            <button class="btn btn-outline" id="saveBtn" type="button">☆ Save</button>
+          </div>
+        </div>
+
+        <div class="player-note muted" id="playerNote" hidden>
+          Streaming only on web. Offline listening is available on the mobile app.
+        </div>
+
+        <audio id="audio" preload="metadata"></audio>
+      </div>
+
+      <!-- Playlist -->
+      <aside class="card player-list">
+        <div class="list-head">
+          <h2 class="section-title">Playlist</h2>
+          <p class="muted" id="listHint">Tap an item to play.</p>
+        </div>
+
+        <div class="list" id="list"></div>
+      </aside>
+    </section>
+  </main>
+
+   <!-- Footer -->
+  <footer class="site-footer footer-pro">
+    <div class="container footer-pro-inner">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-title">Sheikh Dahiru Bauchi</div>
+        <div class="footer-brand-sub">GLOBAL DIGITAL ARCHIVE</div>
+        <p class="footer-text">
+          A digital initiative dedicated to preserving authentic Tafsir recordings and making them accessible worldwide.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">PAGES</div>
+        <a class="footer-link" href="tafsir.html">Tafsir Library</a>
+        <a class="footer-link" href="player.html">Player</a>
+        <a class="footer-link" href="profile.html">Profile</a>
+        <a class="footer-link" href="login.html">Login</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">SUPPORT</div>
+        <a class="footer-link" href="#">Submit Recordings</a>
+        <a class="footer-link" href="#">Partner Network</a>
+        <a class="footer-link" href="#">Privacy Policy</a>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-head">CONTACT</div>
+        <p class="footer-text">For feedback or contributions:</p>
+        <a class="footer-link footer-email" href="mailto:archive@dahirubauchi.org">archive@dahirubauchi.org</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span class="small">© <span id="year"></span> Sheikh Dahiru Bauchi Digital Library.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/pages/player.js"></script>
+</body>
+</html>
 
