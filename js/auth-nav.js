@@ -42,6 +42,7 @@ function syncNav() {
   const nameEl = $("#navUserName");
   const nameElM = $("#navUserNameMobile");
 
+  // Logged out → show Login (hide Profile button)
   if (!isLoggedIn) {
     show(loginBtn);
     show(loginBtnM);
@@ -52,17 +53,16 @@ function syncNav() {
     return;
   }
 
-  // show first letter of name
-  const letter = initialsFromName(s.name);
-
+  // Logged in → hide BOTH Login + Profile buttons in the header
+  // (No Logout on home; Logout stays inside Profile page only)
   hide(loginBtn);
   hide(loginBtnM);
-  show(profileBtn);
-  show(profileBtnM);
-
-  setText(nameEl, letter);
-  setText(nameElM, letter);
+  hide(profileBtn);
+  hide(profileBtnM);
+  setText(nameEl, "");
+  setText(nameElM, "");
 }
+
 
 function bindMobileMenu() {
   const btn = $(".nav-toggle");

@@ -206,3 +206,5 @@ initYear();
 initMobileMenu();
 initResumeButtons();
 initFilters();
+const session = JSON.parse(localStorage.getItem("tafseer:session") || "null");
+if (!session?.email) window.location.replace("login.html");

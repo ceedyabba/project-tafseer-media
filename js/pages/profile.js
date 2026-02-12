@@ -193,6 +193,7 @@ function bindLogout() {
 
   btn.addEventListener("click", () => {
     localStorage.removeItem(STORAGE_SESSION);
+    window.dispatchEvent(new CustomEvent("auth:changed", { detail: null }));
     window.location.href = "index.html";
   });
 }
@@ -234,4 +235,9 @@ function boot() {
   }
 }
 
-boot();
+const session = getSession();
+if (!session?.email) {
+  window.location.replace("login.html");
+} else {
+  boot();
+}
