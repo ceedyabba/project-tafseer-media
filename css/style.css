@@ -100,6 +100,17 @@ button, input, select{ font: inherit; }
 /* =========================
    LAYOUT
    ========================= */
+
+/* Fluid left/right spacing across all phone widths */
+:root{
+  /* min, fluid, max */
+  --gutter: clamp(18px, 5vw, 30px);
+}
+
+.container{
+  padding-left: calc(var(--gutter) + env(safe-area-inset-left, 0px));
+  padding-right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
+}
 .container{
   width: 100%;
   max-width: var(--container);
@@ -1006,4 +1017,127 @@ button, input, select{ font: inherit; }
 
   .toolbar-row{ grid-template-columns: 1fr; }
   .footer-pro-inner{ grid-template-columns: 1fr; }
+}
+
+/* =========================
+   FOOTER (Mobile grouping)
+   - Makes 3 clear groups on phones:
+     1) Brand
+     2) Pages + Support (joined)
+     3) Contact
+   NOTE: Does NOT change .container padding
+   ========================= */
+
+@media (max-width: 560px){
+  /* Layout: brand full width, pages+support side-by-side, contact full width */
+  .footer-pro-inner{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "brand brand"
+      "pages support"
+      "contact contact";
+    column-gap: 10px;
+    row-gap: 12px;
+  }
+
+  /* Map columns by HTML order */
+  .footer-pro-inner .footer-col:nth-child(1){ grid-area: brand; }
+  .footer-pro-inner .footer-col:nth-child(2){ grid-area: pages; }
+  .footer-pro-inner .footer-col:nth-child(3){ grid-area: support; }
+  .footer-pro-inner .footer-col:nth-child(4){ grid-area: contact; }
+
+  /* Group cards */
+  .footer-pro-inner .footer-col{
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    gap: 8px;
+  }
+
+  /* Join Pages + Support into one visual group */
+  .footer-pro-inner .footer-col:nth-child(2){
+    border-radius: 14px 0 0 14px;
+    border-right: 0;
+  }
+  .footer-pro-inner .footer-col:nth-child(3){
+    border-radius: 0 14px 14px 0;
+    border-left: 0;
+    position: relative;
+  }
+  .footer-pro-inner .footer-col:nth-child(3)::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: rgba(255,255,255,0.10);
+  }
+
+  /* Tidy typography so it doesn’t feel “long” */
+  .footer-brand-title{
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .footer-brand-sub{
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+  }
+  .footer-text{
+    max-width: none;
+    line-height: 1.55;
+  }
+
+  .footer-head{
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    margin-bottom: 6px;
+  }
+  .footer-link{
+    display: block;
+    padding: 5px 0;
+  }
+
+  .footer-bottom{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* Extra-small phones: stack, still grouped */
+@media (max-width: 380px){
+  .footer-pro-inner{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "pages"
+      "support"
+      "contact";
+    row-gap: 10px;
+  }
+
+  .footer-pro-inner .footer-col:nth-child(2),
+  .footer-pro-inner .footer-col:nth-child(3){
+    border-radius: 14px;
+    border-left: 1px solid rgba(255,255,255,0.10);
+    border-right: 1px solid rgba(255,255,255,0.10);
+  }
+  .footer-pro-inner .footer-col:nth-child(3)::before{
+    display: none;
+  }
+}
+/* EXTRA SIDE PADDING (override) */
+@media (max-width: 980px){
+  .container{ padding-left: 28px; padding-right: 28px; }
+}
+
+@media (max-width: 560px){
+  .container{ padding-left: 26px; padding-right: 26px; }
+}
+
+@media (max-width: 380px){
+  .container{ padding-left: 22px; padding-right: 22px; }
 }

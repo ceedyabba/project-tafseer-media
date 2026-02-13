@@ -8,6 +8,7 @@ const STORAGE_LAST = "tafseer:last_played";
 const STORAGE_FAV = "tafseer:favorites";
 const STORAGE_TIME = (id) => `tafseer:last_time:${id}`;
 
+
 const getFavs = () => {
   try { return JSON.parse(localStorage.getItem(STORAGE_FAV) || "[]"); }
   catch { return []; }
